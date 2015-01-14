@@ -1,4 +1,10 @@
 <?php
+if (getenv('APPLICATION_ENV')) {
+    define('APPLICATION_ENV', getenv('APPLICATION_ENV'));
+} else {
+    define('APPLICATION_ENV', 'testing');
+}
+
 /**
  * This makes our life easier when dealing with paths. Everything is relative
  * to the application root now.

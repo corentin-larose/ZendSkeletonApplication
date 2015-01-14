@@ -11,6 +11,11 @@
  * file.
  */
 
-return array(
-    // ...
-);
+return [
+    'db' => [
+        'charset'        => 'UTF8', // Supported by ZF2 in dev branch
+        'database'       => 'my-db',
+        'driver'         => 'pdo_mysql',
+        'driver_options' => [PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES 'UTF8',sql_mode=TRADITIONAL"], // TODO: remove when ZF2 will support charset
+    ],
+];

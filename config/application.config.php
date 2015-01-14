@@ -20,7 +20,10 @@ return array(
         // modules are loaded. These effectively override configuration
         // provided by modules themselves. Paths may use GLOB_BRACE notation.
         'config_glob_paths' => array(
-            'config/autoload/{,*.}{global,local}.php',
+            sprintf(
+                'config/autoload/{,*.}{global,%1$s,local}.php',
+                APPLICATION_ENV
+            ),
         ),
 
         // Whether or not to enable a configuration cache.

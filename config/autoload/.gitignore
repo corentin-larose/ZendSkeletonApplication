@@ -1,2 +1,6 @@
 local.php
 *.local.php
+production.php
+*.production.php
+testing.php
+*.testing.php
