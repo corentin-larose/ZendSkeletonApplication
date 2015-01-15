@@ -5,9 +5,16 @@ Config
 
 system config => config/application.config.php
 application config
+Module Configuration getConfig()
 
 module config
-    -> autoload config
+    
+global.php
+*.global.php
+APPLICATION_ENV.php
+*.APPLICATION_ENV.php
+local.php
+*.local.php    
     
 EVENT_MERGE_CONFIG    
         
