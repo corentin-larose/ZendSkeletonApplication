@@ -1,0 +1,13 @@
+Config
+
+- http://framework.zend.com/manual/current/en/tutorials/config.advanced.html
+- eviter la polution du GLOBAL scope
+
+system config => config/application.config.php
+application config
+
+module config
+    -> autoload config
+    
+EVENT_MERGE_CONFIG    
+        
