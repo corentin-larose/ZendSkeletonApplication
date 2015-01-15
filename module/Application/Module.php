@@ -9,6 +9,7 @@
 
 namespace Application;
 
+use Zend\ModuleManager\ModuleEvent;
 use Zend\Mvc\ModuleRouteListener;
 use Zend\Mvc\MvcEvent;
 
@@ -35,5 +36,23 @@ class Module
                 ),
             ),
         );
+    }
+
+    public function init($moduleManager)
+    {
+        $moduleManager->getEventManager()
+            ->attach(ModuleEvent::EVENT_MERGE_CONFIG, [$this, 'onMergeConfig'], -10000);
+    }
+
+    public function onMergeConfig(ModuleEvent $e)
+    {
+        $configListener = $e->getConfigListener();
+        $config         = $configListener->getMergedConfig(false);
+
+        if (isset($config[APPLICATION_ENV])) {
+            $config = \Zend\Stdlib\ArrayUtils::merge($config, $config[APPLICATION_ENV]);
+        }
+
+        $configListener->setMergedConfig($config);
     }
 }

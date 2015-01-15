@@ -1,4 +1,6 @@
-<pre><?=$this->dbConfig;?></pre>
+<pre><?php print_r($this->config['api']);?></pre>
+
+<pre><?php print_r($this->config['db']);?></pre>
 
 <div class="jumbotron">
     <h1><?php echo sprintf($this->translate('Welcome to %sZend Framework 2%s'), '<span class="zf-green">', '</span>') ?></h1>
