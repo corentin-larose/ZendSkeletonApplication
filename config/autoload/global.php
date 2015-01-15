@@ -25,14 +25,28 @@ return [
     ],
 
     'production' => [
-        'db' => [
-            'database' => 'my_db_prod',
+        'en_US' => [
+            'db' => [
+                'database' => 'my_db_prod_en_us',
+            ],
+        ],
+        'fr_FR' => [
+            'db' => [
+                'database' => 'my_db_prod_fr_fr',
+            ],
         ],
     ],
 
     'testing' => [
-        'db' => [
-            'database' => 'my_db_test',
+        'en_US' => [
+            'db' => [
+                'database' => 'my_db_test_en_us',
+            ],
+        ],
+        'fr_FR' => [
+            'db' => [
+                'database' => 'my_db_test_fr_fr',
+            ],
         ],
     ],
 ];

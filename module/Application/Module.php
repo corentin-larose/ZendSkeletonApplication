@@ -49,8 +49,18 @@ class Module
         $configListener = $e->getConfigListener();
         $config         = $configListener->getMergedConfig(false);
 
+        $locale = \Locale::getDefault();
+
+        if (isset($config[$locale])) {
+            $config = \Zend\Stdlib\ArrayUtils::merge($config, $config[$locale]);
+        }
+
         if (isset($config[APPLICATION_ENV])) {
             $config = \Zend\Stdlib\ArrayUtils::merge($config, $config[APPLICATION_ENV]);
+        }
+
+        if (isset($config[APPLICATION_ENV][$locale])) {
+            $config = \Zend\Stdlib\ArrayUtils::merge($config, $config[APPLICATION_ENV][$locale]);
         }
 
         $configListener->setMergedConfig($config);
