@@ -1,20 +1,54 @@
-Config
+ZF2 Config bootcamp
 
-- http://framework.zend.com/manual/current/en/tutorials/config.advanced.html
-- eviter la polution du GLOBAL scope
+- Installer le Skeleton
+    - Cloner le projet avec Git
+    - Executer le Skeleton avecc php -S 0.0.0.0:9999 -t public/ public/index.php 
 
-system config => config/application.config.php
-application config
-Module Configuration getConfig()
+- ZF1 Breaking change
+    - Formats de config => array 
 
-module config
+- Les différents types de configs dans ZF2
+    - system config      => config/application.config.php
+    - module config      => module.config.php
+    - application config => autoload/*
+
+- Config system
+    - Liste/activation des modules
+    - Configuration cache de configuration modules/application
+    - Configuration ordre de chargement des fichiers de configuration modules/application
     
-global.php
-*.global.php
-APPLICATION_ENV.php
-*.APPLICATION_ENV.php
-local.php
-*.local.php    
-    
-EVENT_MERGE_CONFIG    
-        
+- Config modules
+    - Ordre de chargement FIFO
+    - Configuration liée au module *uniquement*
+    - Surchargé par la configuration d'application
+
+- Config application
+    - Ordre de chargement GLOB (défini dans la config système)
+        global.php
+        *.global.php
+        APPLICATION_ENV.php
+        *.APPLICATION_ENV.php
+        local.php
+        *.local.php    
+
+    - Surcharge les configurations des modules
+
+- Opérations de merging sur les fichiers de config
+  - Ordre de merging (modules, application)
+  - glob
+  - \Zend\Stdlib\ArrayUtils::merge (différence avec array_merge_recursive)
+  - \Zend\Stdlib\Glob::glob  
+
+- Contextualisation de la configuration
+    - L'environnement
+    - l'i18n
+
+- Bonnes pratiques
+    - Utiliser le glob pour scinder les fichiers de configuration 
+    - Pas de closures dans la config
+    - Eviter la polution du scope GLOBAL
+
+- Ressourcces
+    - http://framework.zend.com/manual/current/en/tutorials/config.advanced.html
+
+Exemple: Google map
